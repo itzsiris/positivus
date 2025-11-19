@@ -1,0 +1,21 @@
+.soc1als {
+	&__list {
+		display: flex;
+		column-gap: 20px;
+	}
+
+	&__link {
+		@include flex-center(true);
+		@include square(30px);
+
+		@include hover {
+			opacity: 0.7;
+		}
+	}
+}
+
+.linked-in {
+	color: var(--color-dark);
+	background-color: var(--color-light);
+	border-radius: 50%;
+}

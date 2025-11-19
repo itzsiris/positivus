@@ -1,0 +1,35 @@
+.button {
+	@include flex-center(true);
+
+	height: var(--button-height);
+
+	text-wrap: nowrap;
+
+	padding-inline: 35px;
+	font-size: 20px;
+	color: var(--color-light);
+	background-color: var(--color-dark);
+	border: var(--border);
+	border-radius: var(--border-radius);
+
+	@include hover {
+		background-color: var(--color-accent);
+		color: var(--color-dark);
+	}
+
+	&--transparent {
+		color: var(--color-dark);
+		background-color: var(--transparent);
+	}
+
+	&--accent {
+		background-color: var(--color-accent);
+		color: var(--color-dark);
+
+		@include hover {
+			background-color: var(--color-dark);
+			color: var(--color-accent);
+			border-color: var(--color-accent);
+		}
+	}
+}
