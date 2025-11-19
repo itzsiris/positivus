@@ -19,5 +19,5 @@ A modern, responsive landing page template built with **Sass**.
 If you have any suggestions or improvements, please create an issue or submit a pull request.
 
 ## 📄License
-MIT
+None
 
