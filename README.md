@@ -17,39 +17,36 @@ A modern, responsive landing page template built with **Sass**.
 ## Getting Started
 
 
-1. Install Node.js
-Download and install Node.js from [nodejs.org](https://nodejs.org/)
-
-2. Clone the repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/itzsiris/positivus
 cd positivus
 ```
 
-3. Initialize npm project
+2. Initialize npm project
 
 ```bash
 npm init
 ```
 
-4. Install Sass
+3. Install Sass
 
 ```bash
 npm install sass --save-dev
 ```
 
-5. Add script to package.json
+4. Add script to package.json
 ```bash
   "sass-watch": "sass --watch ."
 ```
 
-6. Run Sass watch
+5. Run Sass watch
 ```bash
   npm run sass-watch
 ```
 
-7. Open index.html in your browser.
+6. Open index.html in your browser.
 
 ## Contributing
 
