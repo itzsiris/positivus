@@ -12,7 +12,7 @@ A modern, responsive landing page template built with **Sass**.
 * Fully responsive layout  
 * Built with **Sass** preprocessor
 * Easy to customize with Sass variables
-* [Figma template](https://www.figma.com/community/file/1230604708032389430)
+* [Figma template](https://www.figma.com/community/file/1230604708032389430/positivus-landing-page-design)
 
 ## Getting Started
 
