@@ -884,6 +884,13 @@ h4 {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    align-self: center;
+  }
+}
+@media (max-width: 480px) {
+  .banner__button {
+    width: 200px;
+    font-size: 16px;
   }
 }
 .banner__inner {
@@ -1112,7 +1119,8 @@ h4 {
 }
 .process__accordion[open] {
   background-color: var(--color-accent);
-  --indicatorVerticalRotate: 0deg;
+  --indicatorVerticalRotate: 45deg;
+  --indicatorHorizontalRotate: -45deg;
   height: auto;
 }
 .process__accordion-header {
@@ -1182,23 +1190,61 @@ h4 {
   background-color: var(--color-dark);
 }
 .process__accordion-indicator::after {
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   rotate: var(--indicatorVerticalRotate);
+}
+.process__accordion-indicator::before {
+  transition: all 0.2s ease;
+  rotate: var(--indicatorHorizontalRotate);
+}
+.process__accordion-body-wrapper {
+  overflow: hidden;
+  padding-bottom: 30px;
 }
 .process__accordion-body {
   margin-top: 30px;
   padding-top: 30px;
   border-top: var(--border);
-  overflow: hidden;
 }
 
 details::details-content {
   block-size: 0;
-  transition: block-size 0.2s ease;
+  transition: block-size 0.3s ease, content-visibility 0.3s ease;
+  content-visibility: hidden;
 }
 
 details[open]::details-content {
-  block-size: 80px;
+  block-size: 100px;
+  content-visibility: visible;
+  transition: block-size 0.3s ease, content-visibility 0s 0.3s;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutSlide {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+details[open] .process__accordion-body {
+  animation: fadeInSlide 0.5s ease 0.15s both;
+}
+
+details:not([open]) .process__accordion-body {
+  animation: fadeOutSlide 0.3s ease both;
 }
 
 @media (max-width: 1023px) {

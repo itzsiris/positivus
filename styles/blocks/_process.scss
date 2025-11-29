@@ -5,22 +5,17 @@
 		row-gap: 30px;
 		counter-reset: custom-counter;
 		list-style: none;
-
 		@include mobile {
 			row-gap: 20px;
 		}
 	}
-
 	&__item {
 		--counterContent: counter(custom-counter);
-
 		counter-increment: custom-counter;
-
 		&:nth-child(-n + 9) {
 			--counterContent: "0" counter(custom-counter);
 		}
 	}
-
 	&__accordion {
 		--indicatorVerticalRotate: 90deg;
 		padding: 40px 60px;
@@ -29,21 +24,18 @@
 		border-radius: var(--border-radius-large);
 		box-shadow: var(--shadow);
 		transition: all 0.2s ease;
-
 		@include hover {
 			background-color: var(--color-accent);
 		}
-
 		@include mobile {
 			padding: 30px;
 		}
-
 		&[open] {
 			background-color: var(--color-accent);
-			--indicatorVerticalRotate: 0deg;
+			--indicatorVerticalRotate: 45deg;
+			--indicatorHorizontalRotate: -45deg;
 			height: auto;
 		}
-
 		&-header {
 			display: flex;
 			justify-content: space-between;
@@ -51,78 +43,106 @@
 			column-gap: 50px;
 			cursor: pointer;
 			user-select: none;
-
 			@include mobile {
 				column-gap: 28px;
 			}
 		}
-
 		&-title {
 			@include fluid-text(30, 18);
 			display: flex;
 			align-items: center;
 			column-gap: 25px;
-
 			@include mobile {
 				column-gap: 33px;
 			}
-
 			&::before {
 				content: var(--counterContent);
 				font-size: 2em;
-
 				@include mobile {
 					font-size: 30px;
 				}
 			}
 		}
-
 		&-indicator {
 			@include flex-center;
 			@include square(58px);
 			position: relative;
 			flex-shrink: 0;
-
 			@include mobile {
 				width: 30px;
 			}
-
 			background: var(--color-gray);
 			border: var(--border);
 			border-radius: 50%;
-
 			&::before,
 			&::after {
 				@include abs-center;
-
 				content: "";
 				width: 45%;
 				height: 9%;
 				background-color: var(--color-dark);
 			}
-
 			&::after {
-				transition: all 0.5s ease;
+				transition: all 0.2s ease;
 				rotate: var(--indicatorVerticalRotate);
 			}
+			&::before {
+				transition: all 0.2s ease;
+				rotate: var(--indicatorHorizontalRotate);
+			}
 		}
-
+		&-body-wrapper {
+			overflow: hidden;
+			padding-bottom: 30px;
+		}
 		&-body {
 			margin-top: 30px;
 			padding-top: 30px;
 			border-top: var(--border);
-			overflow: hidden;
 		}
 	}
 }
 
 details::details-content {
 	block-size: 0;
-	transition: block-size 0.2s ease;
+	transition: block-size 0.3s ease, content-visibility 0.3s ease;
+	content-visibility: hidden;
 }
 
 details[open]::details-content {
-	block-size: 80px;
+	block-size: 100px;
+	content-visibility: visible;
+	transition: block-size 0.3s ease, content-visibility 0s 0.3s;
+}
+
+@keyframes fadeInSlide {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeOutSlide {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+}
+
+details[open] .process__accordion-body {
+	animation: fadeInSlide 0.5s ease 0.15s both;
+}
+
+details:not([open]) .process__accordion-body {
+	animation: fadeOutSlide 0.3s ease both;
 }
 
 @include tablet {
@@ -130,13 +150,11 @@ details[open]::details-content {
 		block-size: 120px;
 	}
 }
-
 @include mobile {
 	details[open]::details-content {
 		block-size: 140px;
 	}
 }
-
 @include mobile-s {
 	details[open]::details-content {
 		block-size: 190px;
