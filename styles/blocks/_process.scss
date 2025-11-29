@@ -34,6 +34,7 @@
 			background-color: var(--color-accent);
 			--indicatorVerticalRotate: 45deg;
 			--indicatorHorizontalRotate: -45deg;
+			--plus-scale: 1.02;
 			height: auto;
 		}
 		&-header {
@@ -83,12 +84,14 @@
 				background-color: var(--color-dark);
 			}
 			&::after {
-				transition: all 0.2s ease;
+				transition: all 0.5s ease;
 				rotate: var(--indicatorVerticalRotate);
+				transform-origin: center center;
 			}
 			&::before {
-				transition: all 0.2s ease;
+				transition: all 0.5s ease;
 				rotate: var(--indicatorHorizontalRotate);
+				transform-origin: center center;
 			}
 		}
 		&-body-wrapper {
